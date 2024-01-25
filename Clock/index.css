@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    overflow: hidden;
+    font-size: 10px;
+}
+
+body {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://th.bing.com/th/id/R.525311f49ac65ed48756ff991ecf38da?rik=395I%2bcTMRG0zyw&pid=ImgRaw&r=0);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container__clock {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(7px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.container__data {
+    animation: viewClock 800ms normal;
+    animation-delay: 300ms;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid rgb(218, 218, 218, 0.2);
+    /* backdrop-filter: blur(8px); */
+    /* background: rgba(0, 0, 0, 0.2); */
+    /* box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7); */
+}
+
+.description {
+    font-size: 1.2rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    width: 80%;
+    margin: auto;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+.hour {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    margin-top: 10px;
+    text-wrap: nowrap;
+}
+
+.hour > span {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.date {
+    margin-top: 15px;
+    margin: auto;
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@keyframes viewClock {
+    0% {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (min-width: 359px) {
+    .hour {
+        font-size: 4rem;
+    }
+    .hour > span {
+        font-size: 3rem;
+    }
+    .date {
+        font-size: 1.7rem;
+    }
+    .description {
+        font-size: 1.3rem;
+    }
+    .date {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 657px) {
+    .hour {
+        font-size: 9rem;
+    }
+    .hour > span {
+        font-size: 6rem;
+    }
+    .date {
+        font-size: 1.7rem;
+    }
+    .description {
+        font-size: 1.9rem;
+    }
+    .date {
+        font-size: 1.7rem;
+    }
+}

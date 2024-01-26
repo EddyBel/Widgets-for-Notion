@@ -22,6 +22,6 @@ function obtenerMesYAnioEnTexto() {
 
 /** Funcion que define un fondo de pantalla del reloj de manera aleatoria */
 const defineBackground = () => {
-    const background = getRandomItem(BACKGROUNDS)
+    const background = getRandomItem(BACKGROUNDS_DARK)
     ELEMENTS.backgroundContent.style.backgroundImage = `url(${background})`
  }

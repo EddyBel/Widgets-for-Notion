@@ -2,6 +2,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     defineBackground()
     executeClock()
-    updateCorrectMessage()
-    obtenerMesYAnioEnTexto()
+    getDateNow()
+    // updateCorrectMessage()
 })

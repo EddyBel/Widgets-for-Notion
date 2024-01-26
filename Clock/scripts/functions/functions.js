@@ -12,7 +12,7 @@ function executeClock () {
     } )
 }
 
-function obtenerMesYAnioEnTexto() {
+function getDateNow() {
     const fechaActual = new Date();
     const opcionesDeFormato = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
     const formatoLocal = fechaActual.toLocaleDateString("es-MX", opcionesDeFormato);

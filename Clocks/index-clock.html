@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Clock</title>
+</head>
+
+<body>
+    <div class="w-full min-h-screen rounded-xl relative bg-cover bg-center" id="background"
+        style="background-image: url(./assets/city-nigth.gif);">
+
+        <div class="absolute bottom-7 left-7">
+            <h1 class="text-white font-bold text-xl sm:text-4xl" id="date__day">
+                24 de Junio del 2024
+            </h1>
+            <h2 class="text-white font-bold text-3xl sm:text-6xl" id="date__hour"></h2>
+        </div>
+
+    </div>
+
+    <script>
+
+        // Funciones
+        const $ = el => document.getElementById(el)
+        const $$ = el => document.querySelectorAll(el)
+
+        function obtenerFechaHoy() {
+            const meses = [
+                'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+            ];
+            const hoy = new Date();
+            const dia = hoy.getDate();
+            const mes = meses[hoy.getMonth()];
+            const año = hoy.getFullYear();
+
+            return `${dia} de ${mes} del ${año}`;
+        }
+
+        function obtenerHoraActual() {
+            const ahora = new Date();
+            let horas = ahora.getHours();
+            const minutos = ahora.getMinutes();
+            const esPM = horas >= 12;
+
+            if (esPM && horas > 12) {
+                horas -= 12;
+            }
+
+            if (!esPM && horas === 0) {
+                horas = 12;
+            }
+
+            const horasFormateadas = horas.toString().padStart(2, '0');
+            const minutosFormateados = minutos.toString().padStart(2, '0');
+
+            return `${horasFormateadas}:${minutosFormateados} ${esPM ? 'PM' : 'AM'}`;
+        }
+
+        const backgrounds = ["https://wallpapercave.com/wp/wp12850291.gif", "https://i.pinimg.com/originals/b2/2a/a2/b22aa22b2f3f55b6468361158d52e2e7.gif"]
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const $day = $("date__day")
+            const $hour = $("date__hour")
+
+            $day.textContent = obtenerFechaHoy()
+            $hour.textContent = obtenerHoraActual()
+
+            setInterval(() => {
+                $hour.textContent = obtenerHoraActual()
+            }, 1000)
+
+        })
+    </script>
+</body>
+
+</html>

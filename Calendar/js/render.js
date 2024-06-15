@@ -56,6 +56,6 @@ function renderDaysInCalendar () {
 
 function renderDateNowInCalendar () {
     const {year, weekday, day, month} = getDateNow()
-    ELEMENTS.contaienrYear.innerHTML = year
+    // ELEMENTS.contaienrYear.innerHTML = year
     ELEMENTS.containerDate.innerHTML = `${weekday}, ${day} de ${month}`
 }

@@ -1,44 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Widgets For Notion</title>
-</head>
-<body class="w-full h-full flex flex-col py-10 px-10"
 
-<ul >
-    <li >
-        <a href="./Clock/index.html" class="text-xl hover:text-blue-500 w-full">
-            Reloj
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: hsla(0, 100%, 50%, 1);
+            background-image:
+                radial-gradient(at 40% 20%, hsla(28, 26%, 74%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(189, 26%, 56%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(355, 26%, 93%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, hsla(340, 26%, 76%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(22, 26%, 77%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 100%, hsla(242, 26%, 70%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 0%, hsla(343, 26%, 76%, 1) 0px, transparent 50%);
+            min-width: 100vw;
+            min-height: 100vh;
+            max-height: 100vh;
+            overflow: hidden;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: #ffffff94;
+                z-index: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="w-full h-full flex flex-col py-5 px-10 justify-center items-center" />
+<div class="w-full h-full flex flex-col justify-center items-center max-h-[100vh]">
+    <h1 class="text-5xl font-bold text-center z-20 py-10 flex justify-center items-center gap-3">Widgets For Notion <img
+            src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" alt="Notion Logo" class="w-16"></h1>
+    <div class="flex flex-col items-center px-5 gap-5 z-20 overflow-y-auto max-h-[400px]" id="list-widgets-link">
+        <!-- Widget Links -->
+    </div>
+</div>
+
+
+<!-- Templates -->
+<template id="template-widget-link">
+    <div class="w-full py-2 px-3 bg-blue-500 rounded-xl flex justify-center items-center text-center">
+        <a href="./Clock/index.html" class="text-xl text-white w-full hover:scale-110 transition-all" id="widget-link">
+            <!-- Link Label -->
         </a>
-    </li>
-    <li >
-        <a href="./Clocks/index-clock.html" class="text-xl hover:text-blue-500 w-full">
-            Reloj Pixel Art
-        </a>
-    </li>
-    <li>
-        <a href="./Calendar/index.html" class="text-xl hover:text-blue-500">
-            Clima
-        </a>
-    </li>
-    <li>
-        <a href="./holidays/index-navidad.html" class="text-xl hover:text-blue-500">
-            Contador Navidad
-        </a>
-    </li>
-    <li>
-        <a href="./holidays/index-año.html" class="text-xl hover:text-blue-500">
-            Contador Año Nuevo
-        </a>
-    </li>
-    <li>
-        <a href="./holidays/index-hallowen.html" class="text-xl hover:text-blue-500">
-            Contador Hallowen
-        </a>
-    </li>
-</ul>
+    </div>
+</template>
+
+<script type="module">
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const $ = el => document.getElementById(el)
+        const $$ = el => document.querySelectorAll(el)
+
+        const links = [{
+            label: "v1 Reloj",
+            url: "./Clock/index.html"
+        }, {
+            label: "v2 Reloj (Pixel Art)",
+            url: "./Clocks/index-clock.html"
+        }, {
+            label: "v1 Calendario",
+            url: "./Calendar/index.html"
+        }, {
+            label: "v1 Contador (Navidad)",
+            url: "./holidays/index-navidad.html"
+        }, {
+            label: "v2 Contador (Año Nuevo)",
+            url: "./holidays/index-año.html"
+        }, {
+            label: "v3 Contador (Hallowen)",
+            url: "./holidays/index-hallowen.html"
+        }]
+
+        const $widgetLink = $("template-widget-link")
+        const $containerWidgetsLink = $("list-widgets-link")
+
+        links.forEach(link => {
+            const clone = document.importNode($widgetLink.content, true);
+            const anchor = clone.querySelector('#widget-link');
+            anchor.href = link.url;
+            anchor.textContent = link.label;
+            $containerWidgetsLink.appendChild(clone);
+        });
+
+    })
+
+</script>
+
 </body>
+
 </html>
